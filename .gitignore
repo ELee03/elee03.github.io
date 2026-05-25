@@ -1,0 +1,6 @@
+# Private Claude context — keep out of repo
+CLAUDE.md
+For Claude/
+
+# Any file starting with private_
+**/private_*
