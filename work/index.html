@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work &amp; Projects — Eugene Lee</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- STAR FIELD BAND -->
+  <div class="starband">
+    <span class="starband-text">Vol. I &nbsp;·&nbsp; No. 1</span>
+    <div class="starband-pips">
+      <div class="pip pip-blue"></div>
+      <div class="pip pip-dim"></div>
+      <div class="pip pip-blue"></div>
+    </div>
+    <span class="starband-text">Toronto &nbsp;·&nbsp; MMXXVI</span>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="mast-rule" style="padding-top:16px">
+      <div class="mast-rule-line"></div>
+      <div class="mast-rule-diamond"></div>
+      <div class="mast-rule-line"></div>
+    </div>
+
+    <div class="mast-inner">
+      <div class="mast-col-left">
+        <div class="mast-meta-label">Discipline</div>
+        <div class="mast-meta-item">Electrical Eng.</div>
+        <div class="mast-meta-item">Firmware</div>
+        <div class="mast-meta-item">Biosensing</div>
+      </div>
+
+      <div class="mast-name-block">
+        <div class="mast-starburst">
+          <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="19,2 22,13.5 31,7.5 24.5,17 36,19 24.5,21 31,30.5 22,24.5 19,36 16,24.5 7,30.5 13.5,21 2,19 13.5,17 7,7.5 16,13.5" fill="#7ab8d4" opacity="0.80"/>
+            <circle cx="19" cy="19" r="4.5" fill="#f0ead8"/>
+          </svg>
+        </div>
+        <div class="mast-name">Eugene Lee</div>
+        <div class="mast-tagline">Electrical Engineer &nbsp;·&nbsp; University of Toronto &nbsp;·&nbsp; 2026</div>
+      </div>
+
+      <div class="mast-col-right">
+        <div class="mast-meta-label">Location</div>
+        <div class="mast-meta-item">Toronto, ON</div>
+        <div class="mast-meta-item">Canada</div>
+        <div style="margin-top:10px">
+          <div class="mast-meta-label">Contact</div>
+          <div class="mast-meta-item" style="font-size:10px">euglee315@gmail.com</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mast-rule">
+      <div class="mast-rule-line"></div>
+      <div class="mast-rule-sq"></div>
+      <div class="mast-rule-line-dim"></div>
+      <div class="mast-rule-sq"></div>
+      <div class="mast-rule-line"></div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="navband">
+    <a href="../index.html">About</a>
+    <a href="index.html" class="active">Work &amp; Projects</a>
+    <a href="../reading/index.html">Reading List</a>
+  </nav>
+
+  <!-- BODY -->
+  <div class="body-cols-wide">
+
+    <!-- Left sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-head">Industry</div>
+        <div class="sidebar-item">Tenstorrent</div>
+        <div class="sidebar-sub">AI accelerator hardware</div>
+        <div class="sidebar-item">UrInsights</div>
+        <div class="sidebar-sub">Wearable biosensing</div>
+      </div>
+
+      <hr class="sidebar-rule">
+
+      <div class="sidebar-block">
+        <div class="sidebar-head">Research</div>
+        <div class="sidebar-item">U of T BME</div>
+        <div class="sidebar-sub">Vagus nerve stimulation, 2022</div>
+      </div>
+
+      <hr class="sidebar-rule">
+
+      <div class="sidebar-block">
+        <div class="sidebar-head">Academic</div>
+        <div class="sidebar-item">BASc Thesis</div>
+        <div class="sidebar-sub">Low-power wearable potentiometric biosensor platform</div>
+      </div>
+    </div>
+
+    <div class="col-rule"></div>
+
+    <!-- Main content -->
+    <div class="main">
+
+      <!-- UrInsights -->
+      <div class="section-ornament">
+        <span class="section-label">Current</span>
+        <div class="section-line"></div>
+        <div class="section-sq"></div>
+      </div>
+
+      <div class="work-entry">
+        <div class="work-header">
+          <span class="work-title">Founding Electrical Engineer — UrInsights</span>
+          <span class="work-date">Sep 2025 – Present</span>
+        </div>
+        <div class="work-org">Early-stage wearable biosensor startup · grew out of BASc thesis work under Prof. Roman Genov</div>
+        <ul class="work-points">
+          <li>Designed the low-power electronic architecture for a wearable dual-ion potentiometric biosensor patch targeting potassium and creatinine monitoring, centred on an EFR32BG22 BLE SoC and AD4130-8 24-bit sigma-delta ADC.</li>
+          <li>Specified the LMP7721 (3&thinsp;fA typical input bias) as the front-end buffer to interface G&Omega;-range ion-selective electrode source impedances; validated signal chain in LTSpice across DC accuracy, startup settling, step response, and AVDD ripple rejection. SPICE simulations confirmed tracking error below 5&thinsp;mV over a &plusmn;500&thinsp;mV input range with post-enable settling within 200&thinsp;ms.</li>
+          <li>Performed system-level power budgeting and duty-cycle analysis for coin-cell operation, establishing a unified 2.5&thinsp;V DVDD/AVDD supply architecture with AFE power-gating during idle intervals — projected average draw of 27&thinsp;&mu;A and 304-day battery life from a CR2032.</li>
+          <li>Designing full system schematic in Altium Designer: AFE, BLE radio, power management, and electrode interface.</li>
+        </ul>
+      </div>
+
+      <!-- Tenstorrent Kernels -->
+      <div class="section-ornament" style="margin-top:10px">
+        <span class="section-label">Industry</span>
+        <div class="section-line"></div>
+        <div class="section-sq"></div>
+      </div>
+
+      <div class="work-entry">
+        <div class="work-header">
+          <span class="work-title">Low-Level Kernels Intern — Tenstorrent</span>
+          <span class="work-date">May – Aug 2025</span>
+        </div>
+        <div class="work-org">AI accelerator hardware company</div>
+        <ul class="work-points">
+          <li>Designed and executed performance studies of Network-on-Chip (NoC) data movement in a distributed-memory AI accelerator, characterising throughput and scaling behaviour under unicast and multicast traffic patterns.</li>
+          <li>Built investigation infrastructure: contributed to the initial test suites used to instrument NoC traffic; reverse-engineered undocumented low-level NoC APIs to diagnose and fix improper usage in internal test suites; refactored shared visualisation tooling to generalise across all investigation types.</li>
+          <li>Characterised multicast write throughput across ten sender placement schemes on Wormhole and Blackhole, varying NoC selection and loopback; traced a &gt;30% throughput degradation to write-acknowledge path contention on shared physical links — not virtual channel interference as initially suspected — and produced topology-specific placement guidelines (<a href="https://github.com/tenstorrent/tt-low-level-documentation/blob/main/data_movement_doc/multicast_schemes/Multicast%20Schemes.md" target="_blank">published in tt-low-level-documentation</a>).</li>
+          <li>Demonstrated across one-to-one, one-to-all, and all-to-all traffic patterns that same-class VC parallelisation yields no throughput gain; attributed the null result to router arbitration ordering (VCs arbitrated before ports, wasting cycles on blocked VCs) and shared input buffer pressure as VC count increases — converted findings into <a href="https://github.com/tenstorrent/tt-low-level-documentation/blob/main/data_movement_doc/virtual_channels/Virtual%20Channels.md" target="_blank">architectural guidance on correct VC usage</a> for traffic-class separation rather than bandwidth scaling.</li>
+        </ul>
+      </div>
+
+      <div class="work-entry">
+        <div class="work-header">
+          <span class="work-title">Systems Engineering Intern — Tenstorrent</span>
+          <span class="work-date">May 2024 – May 2025</span>
+        </div>
+        <div class="work-org">AI accelerator hardware company</div>
+        <ul class="work-points">
+          <li>Led development of infrastructure for P0-status qualification testing of compute systems; refactored legacy scripts into modular codebases with proper documentation, significantly enhancing scalability and clarity.</li>
+          <li>Designed and implemented custom analysis tools to support di/dt debugging; collaborated directly with a company co-founder to extract actionable insights using oscilloscopes and high-speed measurements.</li>
+          <li>Introduced a firmware-level I²C message queue to decouple tooling from direct bus access, and owned PMBus telemetry APIs exposing voltage regulator and rail-level data across multiple board iterations.</li>
+          <li>Took ownership of testing framework to evaluate power consumption under diverse workloads; integrated embedded logging to automate data collection and streamline visualisation for executive reporting.</li>
+        </ul>
+      </div>
+
+      <!-- Research -->
+      <div class="section-ornament" style="margin-top:10px">
+        <span class="section-label">Research</span>
+        <div class="section-line"></div>
+        <div class="section-sq"></div>
+      </div>
+
+      <div class="work-entry">
+        <div class="work-header">
+          <span class="work-title">Research Assistant — U of T Institute of Biomedical Engineering</span>
+          <span class="work-date">May – Aug 2022</span>
+        </div>
+        <div class="work-org">Vagus nerve stimulation project</div>
+        <ul class="work-points">
+          <li>Developed a detailed 3D anatomical model in Autodesk Inventor and executed vagus nerve stimulation simulations in COMSOL Multiphysics.</li>
+          <li>Authored MATLAB scripts to analyse simulation data, assessing the effectiveness of different stimulation electrode geometries.</li>
+          <li>Enhanced a setup for minimally-invasive nerve stimulation, achieving up to four times the efficiency of conventional non-invasive methods — resulting in <a href="https://pubmed.ncbi.nlm.nih.gov/37963401/" target="_blank">second authorship on the research publication</a>.</li>
+        </ul>
+      </div>
+
+    </div><!-- /main -->
+  </div><!-- /body-cols-wide -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span class="footer-text">elee03.github.io</span>
+    <div class="footer-diamonds">
+      <div class="footer-dot-sm"></div>
+      <div class="footer-diamond"></div>
+      <div class="footer-dot-sm"></div>
+    </div>
+    <span class="footer-text">Est.&nbsp;MMXXVI</span>
+  </footer>
+
+</div>
+</body>
+</html>
