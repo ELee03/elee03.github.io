@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second-Order Systems — Control Theory — Eugene Lee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+<div class="page">
+
+  <div class="starband">
+    <span class="starband-text">Vol. I &nbsp;·&nbsp; No. 1</span>
+    <div class="starband-pips">
+      <div class="pip pip-blue"></div>
+      <div class="pip pip-dim"></div>
+      <div class="pip pip-blue"></div>
+    </div>
+    <span class="starband-text">Toronto &nbsp;·&nbsp; MMXXVI</span>
+  </div>
+
+  <div class="masthead">
+    <div class="mast-rule" style="padding-top:16px">
+      <div class="mast-rule-line"></div>
+      <div class="mast-rule-diamond"></div>
+      <div class="mast-rule-line"></div>
+    </div>
+    <div class="mast-inner">
+      <div class="mast-col-left">
+        <div class="mast-meta-label">Discipline</div>
+        <div class="mast-meta-item">Electrical Eng.</div>
+        <div class="mast-meta-item">Firmware</div>
+        <div class="mast-meta-item">Biosensing</div>
+      </div>
+      <div class="mast-name-block">
+        <div class="mast-starburst">
+          <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="19,2 22,13.5 31,7.5 24.5,17 36,19 24.5,21 31,30.5 22,24.5 19,36 16,24.5 7,30.5 13.5,21 2,19 13.5,17 7,7.5 16,13.5" fill="#7ab8d4" opacity="0.80"/>
+            <circle cx="19" cy="19" r="4.5" fill="#f0ead8"/>
+          </svg>
+        </div>
+        <div class="mast-name">Eugene Lee</div>
+        <div class="mast-tagline">Electrical Engineer &nbsp;·&nbsp; University of Toronto &nbsp;·&nbsp; 2026</div>
+      </div>
+      <div class="mast-col-right">
+        <div class="mast-meta-label">Location</div>
+        <div class="mast-meta-item">Toronto, ON</div>
+        <div class="mast-meta-item">Canada</div>
+        <div style="margin-top:10px">
+          <div class="mast-meta-label">Contact</div>
+          <div class="mast-meta-item" style="font-size:10px">euglee315@gmail.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="mast-rule" style="padding-bottom:0">
+      <div class="mast-rule-line"></div>
+      <div class="mast-rule-sq"></div>
+      <div class="mast-rule-line-dim"></div>
+      <div class="mast-rule-sq"></div>
+      <div class="mast-rule-line"></div>
+    </div>
+  </div>
+
+  <nav class="navband">
+    <a href="../../index.html">About</a>
+    <a href="../../work/index.html">Work &amp; Projects</a>
+    <a href="../../reading/index.html">Reading List</a>
+    <a href="../index.html" class="active">Notes</a>
+  </nav>
+
+  <div class="body-cols-wide">
+
+    <div class="sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-head">Control Theory</div>
+
+        <div class="sidebar-group">Lessons</div>
+        <div class="sidebar-item lesson-active">◆ Second-Order Systems</div>
+        <div class="sidebar-item lesson-planned">Root Locus</div>
+        <div class="sidebar-item lesson-planned">Nyquist &amp; Stability</div>
+        <div class="sidebar-item lesson-planned">PID Design</div>
+        <div class="sidebar-item lesson-planned">State-Space</div>
+        <div class="sidebar-item lesson-planned">Controllability &amp; Observability</div>
+        <div class="sidebar-item lesson-planned">Physiological Control</div>
+
+        <hr class="sidebar-rule">
+
+        <div class="sidebar-group">Textbooks</div>
+        <div class="sidebar-item" style="font-size:11px; font-weight:600">Modern Control Engineering</div>
+        <div class="sidebar-sub">Ogata, 5th ed.</div>
+        <div class="sidebar-item" style="font-size:11px; font-weight:600">Feedback Control of Dynamic Systems</div>
+        <div class="sidebar-sub">Franklin, Powell &amp; Emami-Naeini, 8th ed.</div>
+        <div class="sidebar-item" style="font-size:11px; font-weight:600">Modern Control Systems</div>
+        <div class="sidebar-sub">Dorf &amp; Bishop, 13th ed.</div>
+      </div>
+    </div>
+
+    <div class="col-rule"></div>
+
+    <div class="main">
+
+      <div class="breadcrumb">
+        <a href="../index.html">Field Notes</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="index.html">Control Theory</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-curr">Second-Order Systems</span>
+      </div>
+
+      <div class="section-ornament">
+        <span class="section-label">Control Theory — Lesson 1</span>
+        <div class="section-line"></div>
+        <div class="section-sq"></div>
+      </div>
+
+      <p class="notes-intro">
+        These notes cover ECE356 (Introduction to Control Theory) — the frequency-domain
+        foundations of feedback systems: transfer functions, stability, Bode analysis, and
+        root locus. Continued in ECE557 (state-space and modern methods) and BME331
+        (physiological control applications).
+      </p>
+
+      <div class="notes-subsection">Second-Order Systems &amp; Frequency Response</div>
+
+      <p class="notes-body">
+        The second-order system is the canonical model in classical control. It captures the
+        essential trade-off between speed and stability that appears everywhere — motor drives,
+        analog filters, PLL loops, suspension systems. Its transfer function is parameterized
+        by two quantities:
+      </p>
+
+      <div class="eq-block">
+        H(s) &nbsp;=&nbsp; ω<sub>n</sub>² &nbsp;/&nbsp; (s² + 2ζω<sub>n</sub>s + ω<sub>n</sub>²)
+      </div>
+
+      <p class="notes-body">
+        <strong>ω<sub>n</sub></strong> (natural frequency) sets the bandwidth — where on the
+        frequency axis the system lives. <strong>ζ</strong> (damping ratio) governs the shape:
+        how peaked the response is, where the poles sit in the s-plane, and whether the step
+        response rings. The Bode plot is the frequency-domain fingerprint of this system.
+      </p>
+
+      <p class="notes-body">
+        Drag the sliders below to build intuition for how each parameter shapes the magnitude
+        and phase response. The dashed line marks ω<sub>n</sub>.
+      </p>
+
+      <div class="widget-wrap">
+        <div class="widget-label">Interactive · Bode Plot — Second-Order System</div>
+        <div id="bode-plot" style="width:100%; height:420px;"></div>
+        <div class="slider-row">
+          <span class="slider-name">ω<sub>n</sub> &nbsp;— natural frequency</span>
+          <input type="range" id="sl-wn" min="-1" max="2" step="0.02" value="0">
+          <span class="slider-val" id="val-wn">1.00 rad/s</span>
+        </div>
+        <div class="slider-row">
+          <span class="slider-name">ζ &nbsp;— damping ratio</span>
+          <input type="range" id="sl-zeta" min="0.05" max="2.0" step="0.01" value="0.5">
+          <span class="slider-val" id="val-zeta">0.50</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-head">Key observations</div>
+        <p>
+          When ζ &lt; 1/√2 ≈ 0.707, a resonant peak appears near ω<sub>n</sub> — the system
+          amplifies inputs near its natural frequency. At ζ = 0.707 (maximally flat, Butterworth),
+          the peak disappears and the −3 dB point is exactly ω<sub>n</sub>. Above ζ = 1 the
+          system is overdamped — poles move onto the real axis and the response resembles two
+          cascaded first-order filters. The high-frequency asymptote is always −40 dB/decade,
+          regardless of damping.
+        </p>
+      </div>
+
+      <p class="notes-body">
+        Notice that sweeping ω<sub>n</sub> only translates the entire plot along the frequency
+        axis — the shape is determined purely by ζ. This separation of concerns is what makes
+        the normalized form of the transfer function so useful for design.
+      </p>
+
+      <!-- Lesson navigation -->
+      <div class="lesson-nav">
+        <span class="lesson-nav-link disabled">
+          <span class="lesson-nav-dir">← Previous</span>
+          <span class="lesson-nav-title">—</span>
+        </span>
+        <span class="lesson-nav-link disabled">
+          <span class="lesson-nav-dir">Next →</span>
+          <span class="lesson-nav-title">Root Locus</span>
+        </span>
+      </div>
+
+    </div><!-- /main -->
+
+  </div><!-- /body-cols-wide -->
+
+  <footer class="site-footer">
+    <span class="footer-text">elee03.github.io</span>
+    <div class="footer-diamonds">
+      <div class="footer-dot-sm"></div>
+      <div class="footer-diamond"></div>
+      <div class="footer-dot-sm"></div>
+    </div>
+    <span class="footer-text">Est.&nbsp;MMXXVI</span>
+  </footer>
+
+</div>
+
+<script>
+const CREAM = '#f0ead8';
+const NAVY  = '#1a2840';
+const BLUE  = '#7ab8d4';
+const MUTED = '#7a6a55';
+
+function logspace(a, b, n) {
+  const out = [];
+  for (let i = 0; i < n; i++) out.push(Math.pow(10, a + (b - a) * i / (n - 1)));
+  return out;
+}
+
+function bodeCalc(omega_n, zeta) {
+  const us    = logspace(-2, 2, 800);
+  const freqs = us.map(u => u * omega_n);
+  const mag   = [];
+  const phase = [];
+  for (const u of us) {
+    const re = 1 - u * u;
+    const im = 2 * zeta * u;
+    const d  = Math.sqrt(re * re + im * im);
+    mag.push(20 * Math.log10(1 / d));
+    phase.push(-Math.atan2(im, re) * 180 / Math.PI);
+  }
+  return { freqs, mag, phase };
+}
+
+function buildTraces(omega_n, zeta) {
+  const { freqs, mag, phase } = bodeCalc(omega_n, zeta);
+  return [
+    {
+      x: freqs, y: mag,
+      type: 'scatter', mode: 'lines',
+      line: { color: NAVY, width: 2 },
+      xaxis: 'x', yaxis: 'y',
+      hovertemplate: '%{x:.3g} rad/s<br>%{y:.1f} dB<extra></extra>'
+    },
+    {
+      x: [omega_n, omega_n], y: [-75, 22],
+      type: 'scatter', mode: 'lines',
+      line: { color: MUTED, width: 1, dash: 'dot' },
+      xaxis: 'x', yaxis: 'y',
+      hoverinfo: 'skip', showlegend: false
+    },
+    {
+      x: freqs, y: phase,
+      type: 'scatter', mode: 'lines',
+      line: { color: BLUE, width: 2 },
+      xaxis: 'x2', yaxis: 'y2',
+      hovertemplate: '%{x:.3g} rad/s<br>%{y:.1f}°<extra></extra>'
+    },
+    {
+      x: [omega_n, omega_n], y: [-185, 5],
+      type: 'scatter', mode: 'lines',
+      line: { color: MUTED, width: 1, dash: 'dot' },
+      xaxis: 'x2', yaxis: 'y2',
+      hoverinfo: 'skip', showlegend: false
+    }
+  ];
+}
+
+const layout = {
+  paper_bgcolor: CREAM,
+  plot_bgcolor:  CREAM,
+  margin: { t: 10, b: 44, l: 58, r: 14 },
+  showlegend: false,
+  font: { family: "'Space Grotesk', sans-serif", size: 10.5, color: NAVY },
+  xaxis: {
+    type: 'log', domain: [0, 1],
+    showgrid: true, gridcolor: 'rgba(26,40,64,0.1)',
+    zeroline: false, showticklabels: false,
+    anchor: 'y'
+  },
+  yaxis: {
+    domain: [0.54, 1],
+    title: { text: 'Magnitude (dB)', font: { size: 10.5 } },
+    showgrid: true, gridcolor: 'rgba(26,40,64,0.1)',
+    zeroline: true, zerolinecolor: 'rgba(26,40,64,0.25)',
+    range: [-75, 22],
+    anchor: 'x'
+  },
+  xaxis2: {
+    type: 'log', domain: [0, 1],
+    title: { text: 'ω (rad/s)', font: { size: 10.5 } },
+    showgrid: true, gridcolor: 'rgba(26,40,64,0.1)',
+    zeroline: false,
+    anchor: 'y2'
+  },
+  yaxis2: {
+    domain: [0, 0.46],
+    title: { text: 'Phase (deg)', font: { size: 10.5 } },
+    showgrid: true, gridcolor: 'rgba(26,40,64,0.1)',
+    zeroline: false, range: [-185, 5],
+    tickvals: [0, -45, -90, -135, -180],
+    anchor: 'x2'
+  }
+};
+
+const config = { displayModeBar: false, responsive: true };
+
+Plotly.newPlot('bode-plot', buildTraces(1.0, 0.5), layout, config);
+
+function update() {
+  const omega_n = Math.pow(10, +document.getElementById('sl-wn').value);
+  const zeta    = +document.getElementById('sl-zeta').value;
+  document.getElementById('val-wn').textContent   = omega_n < 10 ? omega_n.toFixed(2) + ' rad/s'
+                                                                  : omega_n.toFixed(1) + ' rad/s';
+  document.getElementById('val-zeta').textContent = zeta.toFixed(2);
+  Plotly.react('bode-plot', buildTraces(omega_n, zeta), layout, config);
+}
+
+document.getElementById('sl-wn').addEventListener('input', update);
+document.getElementById('sl-zeta').addEventListener('input', update);
+</script>
+
+</body>
+</html>
