@@ -4,3 +4,23 @@ For Claude/
 
 # Any file starting with private_
 **/private_*
+
+# Claude Code dev tooling
+.claude/
+
+# GoodNotes exports and raw course notes (source material, not published)
+**/*.pdf
+**/*.goodnotes
+**/*.note
+notes/raw/
+notes/source/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+*.swo
