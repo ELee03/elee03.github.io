@@ -179,6 +179,10 @@ a { color: inherit; text-decoration: none; }
   display: grid;
   grid-template-columns: 195px 1px 1fr;
 }
+.body-cols-right {
+  display: grid;
+  grid-template-columns: 1fr 1px 168px;
+}
 .col-rule { background: var(--divider); }
 
 .sidebar       { padding: 24px 18px; }
@@ -379,7 +383,7 @@ a { color: inherit; text-decoration: none; }
   .mast-inner { grid-template-columns: 1fr; gap: 12px; }
   .mast-col-left, .mast-col-right { text-align: center; }
   .mast-name { font-size: 38px; }
-  .body-cols, .body-cols-wide { grid-template-columns: 1fr; }
+  .body-cols, .body-cols-wide, .body-cols-right { grid-template-columns: 1fr; }
   .col-rule  { display: none; }
   .sidebar   { border-bottom: 0.5px solid var(--divider); }
   .reading-grid { grid-template-columns: 1fr; }
